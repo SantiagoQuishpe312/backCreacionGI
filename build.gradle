@@ -74,7 +74,7 @@ tasks.register('cucumber') {
 			classpath = sourceSets.test.runtimeClasspath
 			args = [
 					'--plugin', 'pretty',
-					'--plugin', 'json:build/reports/cucumber-report.json',
+					'--plugin', 'json:cucumber-report.json',
 					'--glue', 'ec.edu.espe.GrupoInvestigacion.config', // Clase de configuración
 					'--glue', 'ec.edu.espe.GrupoInvestigacion.glue', // Definiciones de pasos
 					'src/test/resources/features'
