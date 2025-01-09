@@ -16,7 +16,8 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '17'  # O la versión que necesites
+          java-version: '11'
+          distribution: 'temurin'
 
       - name: Run Cucumber Tests
         run: |
