@@ -16,7 +16,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: '17'
           distribution: 'temurin'
 
       - name: Make gradlew executable
@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Cucumber Tests
         run: |
-          ./gradlew test  # Comando para ejecutar tus pruebas de Cucumber
+          ./gradlew cucumber  # Comando para ejecutar tus pruebas de Cucumber
           mkdir -p cucumber-reports
           cp -r build/reports/cucumber/*.json cucumber-reports/  # Ajusta la ruta según tu proyecto
 
