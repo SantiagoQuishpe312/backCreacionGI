@@ -19,6 +19,9 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Run Cucumber Tests
         run: |
           ./gradlew test  # Comando para ejecutar tus pruebas de Cucumber
