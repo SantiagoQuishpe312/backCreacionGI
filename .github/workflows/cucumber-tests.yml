@@ -1,0 +1,31 @@
+name: Cucumber Tests
+
+on:
+  push:
+    branches:
+      - main  # o la rama que prefieras
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'  # O la versión que necesites
+
+      - name: Run Cucumber Tests
+        run: |
+          ./gradlew test  # Comando para ejecutar tus pruebas de Cucumber
+          mkdir -p cucumber-reports
+          cp -r build/reports/cucumber/*.json cucumber-reports/  # Ajusta la ruta según tu proyecto
+
+      - name: Upload Reports as Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: cucumber-reports
+          path: cucumber-reports/
