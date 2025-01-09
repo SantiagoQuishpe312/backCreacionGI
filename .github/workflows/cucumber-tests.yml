@@ -1,35 +1,18 @@
-name: Cucumber Tests
+name: Upload Cucumber Reports
 
 on:
-  push:
-    branches:
-      - main  # o la rama que prefieras
+  workflow_dispatch:  # Permite ejecutar el workflow manualmente
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  upload-reports:
+    runs-on: ubuntu-latest  # O el sistema que prefieras
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Run Cucumber Tests
-        run: |
-          ./gradlew cucumber  # Comando para ejecutar tus pruebas de Cucumber
-          mkdir -p cucumber-reports
-          cp -r build/reports/cucumber/*.json cucumber-reports/  # Ajusta la ruta según tu proyecto
-
-      - name: Upload Reports as Artifacts
+      - name: Upload Cucumber Reports
         uses: actions/upload-artifact@v3
         with:
           name: cucumber-reports
-          path: cucumber-reports/
+          path: build/reports/cucumber-report.json  # Cambia esta ruta por la ubicación de tu reporte
