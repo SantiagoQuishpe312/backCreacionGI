@@ -1,7 +1,8 @@
 package ec.edu.espe.GrupoInvestigacion.glue;
-
 import ec.edu.espe.GrupoInvestigacion.dao.DaoInvGroup;
 import ec.edu.espe.GrupoInvestigacion.dto.DtoInvGroup;
+import ec.edu.espe.GrupoInvestigacion.model.ModelInvGroup;
+import ec.edu.espe.GrupoInvestigacion.model.ModelUser;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -27,7 +28,6 @@ public class InvGroupStepDefinitions {
     @Autowired
     private DaoInvGroup daoInvGroup;
 
-    // Caso de prueba para inicio de sesión con credenciales válidas
     @Given("the user with ID {long} exists and has an associated research group")
     public void theUserWithIdExistsAndHasAnAssociatedResearchGroup(Long userId) {
         // Valida que el usuario tenga grupos asociados en la base de datos
@@ -48,6 +48,7 @@ public class InvGroupStepDefinitions {
         String finalUrl = endpoint.startsWith("http") ? endpoint : baseUrl + endpoint; // Verifica si ya es una URL completa
         response = restTemplate.getForEntity(finalUrl, String.class);
     }
+
 
     @Then("the response status should be {int}")
     public void theResponseStatusShouldBe(int statusCode) {
@@ -99,6 +100,7 @@ public class InvGroupStepDefinitions {
         }
     }
 
+
     @When("el usuario envía una solicitud POST a {string} con los datos del grupo")
     public void elUsuarioEnviaUnaSolicitudPOSTAConLosDatosDelGrupo(String endpoint) {
         RestTemplate restTemplate = new RestTemplate();
@@ -125,35 +127,5 @@ public class InvGroupStepDefinitions {
     @Then("la respuesta debería contener un mensaje de error indicando los campos faltantes")
     public void laRespuestaDeberiaContenerUnMensajeDeErrorIndicandoLosCamposFaltantes() {
         assertThat(response.getBody()).contains("error");
-    }
-
-    // Caso de prueba para la creación exitosa de un nuevo grupo
-    @Given("el sistema está en funcionamiento")
-    public void elSistemaEstaEnFuncionamiento() {
-        // Aquí se podría agregar lógica adicional si es necesario para asegurar que el sistema está en funcionamiento.
-        assertThat(true).isTrue();  // Asegura que el sistema está "funcionando" (puede ser más detallado si es necesario).
-    }
-
-    @When("el usuario envía una solicitud POST a \"/create\" con los datos del grupo")
-    public void elUsuarioEnviaUnaSolicitudPOSTACreateConLosDatosDelGrupo() {
-        RestTemplate restTemplate = new RestTemplate();
-        response = restTemplate.postForEntity(baseUrl + "/create", dtoInvGroup, String.class);  // Usa la URL "/create"
-    }
-
-    @Then("la respuesta debería ser 201 \"Created\"")
-    public void laRespuestaDeberiaSer201Created() {
-        assertThat(response.getStatusCodeValue()).isEqualTo(201);  // Verifica que la respuesta sea 201
-    }
-
-    @Then("la respuesta debería contener el ID del nuevo grupo creado")
-    public void laRespuestaDeberiaContenerElIdDelNuevoGrupoCreadoEnCreate() {
-        String body = response.getBody();
-        // Extraer el número del ID en el formato adecuado
-        String idRegex = "\"id\":(\\d+)";  // Asume que la respuesta tiene un formato JSON con un campo "id"
-        Pattern pattern = Pattern.compile(idRegex);
-        Matcher matcher = pattern.matcher(body);
-        assertThat(matcher.find()).isTrue();
-        String id = matcher.group(1);
-        assertThat(id).matches("\\d+");
     }
 }
