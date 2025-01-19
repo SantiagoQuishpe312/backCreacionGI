@@ -1,8 +1,6 @@
+@MGDGIYM-10
 Feature: Validar el envío del formulario de creación de un grupo de investigación
 
-  Como usuario del sistema
-  Quiero validar el envío del formulario de creación de un grupo de investigación
-  Para asegurarme de que funciona correctamente según las condiciones esperadas
 
   Scenario: Enviar formulario con datos correctos
     Given que he completado toda la información necesaria del formulario con:

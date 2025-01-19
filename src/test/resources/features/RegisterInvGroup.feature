@@ -1,10 +1,5 @@
+@MGDGIYM-17
 Feature: Emitir acta de registro en UGIN y registrar el grupo de investigación
-  Como administrador del sistema
-  Quiero registrar un grupo de investigación aprobado
-  Para generar un acta de registro y cambiar el estado del grupo a "Activo"
-
-  Background:
-    Given que el grupo de investigación ha sido aprobado
 
   Scenario: Registrar un grupo aprobado
     Given que el grupo de investigación tiene el siguiente estado:

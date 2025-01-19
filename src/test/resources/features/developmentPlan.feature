@@ -1,10 +1,5 @@
+@MGDGIYM-11
 Feature: Enviar el plan de desarrollo del grupo de investigación
-  Como un usuario
-  Quiero enviar un plan de desarrollo del grupo de investigación
-  Para que sea almacenado para evaluación
-
-  Background:
-    Given que el formulario de plan de desarrollo está habilitado
 
   Scenario: Completar el formulario con datos correctos
     Given que he completado el formulario de plan de desarrollo con:

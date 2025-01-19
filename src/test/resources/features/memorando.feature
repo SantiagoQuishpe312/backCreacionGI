@@ -1,10 +1,6 @@
+@MGDGIYM-14
 Feature: Enviar un memorando de conformación de un grupo de investigación
-  Como un usuario
-  Quiero enviar un memorando de conformación de un grupo de investigación
-  Para notificar a los destinatarios correspondientes
 
-  Background:
-    Given que el grupo de investigación está aprobado
 
   Scenario: Enviar memorando con la información correcta
     Given que he completado el memorando con:

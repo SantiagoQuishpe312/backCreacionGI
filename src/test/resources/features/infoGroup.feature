@@ -1,10 +1,5 @@
+@MGDGIYM-15
 Feature: Consultar información remitida por un grupo de investigación
-  Como un director, coordinador o miembro del comité
-  Quiero consultar la información remitida por un grupo de investigación
-  Para visualizarla de manera clara y organizada
-
-  Background:
-    Given que tengo acceso al sistema como "director"
 
   Scenario: Consultar información remitida por un grupo válido
     Given que existe un grupo registrado con:
